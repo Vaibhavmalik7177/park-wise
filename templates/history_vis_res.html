@@ -1,0 +1,40 @@
+{% extends "layout_resident.html" %}
+
+{% block title %}
+    Parking History
+{% endblock %}
+
+{% block main %}
+    <div class="container py-4">
+        <h2 class="mb-4 text-center">Visitor Parking History</h2>
+
+        {% if logs %}
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Vehicle Registration No.</th>
+                            <th scope="col">Time In</th>
+                            <th scope="col">Expected Exit Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for log in logs %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td><strong class="text-uppercase">{{ log.regisitration_no }}</strong></td>
+                                <td>{{ log.timein }}</td>
+                                <td>{{ log.etime }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center" role="alert">
+                No parking records found in history.
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

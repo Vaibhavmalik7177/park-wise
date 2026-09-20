@@ -1,0 +1,20 @@
+{% extends "layout_resident.html" %}
+
+{% block title %}
+    Number Found
+{% endblock %}
+
+{% block main %}
+
+    <div class="container py-5 text-center">
+        <div class="card shadow-sm mx-auto" style="max-width: 500px;">
+            <div class="card-body p-4">
+                <div class="mb-3 fs-1">🚘</div>
+                <h1 class="h3 mb-3">This vehicle belongs to <strong>{{ name }}</strong></h1>
+                <h2 class="h5 text-muted mb-4">Phone Number: <a href="tel:{{ phno }}" class="text-decoration-none fw-bold">{{ phno }}</a></h2>
+
+                <a href="/find_phn" class="btn btn-outline-primary">Search Another Vehicle</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

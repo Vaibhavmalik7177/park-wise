@@ -1,0 +1,25 @@
+{% extends "layout_visitor.html" %}
+
+{% block title %}
+    Log In(Resident)
+{% endblock %}
+
+{% block main %}
+    <div class="alert alert-warning text-center py-2 mb-3 mx-auto" role="alert" style="max-width: 400px; font-size: 0.85rem;">
+        <strong>⚠️ Note:</strong> Inputs are <strong>case-sensitive</strong>.
+    </div>
+
+    <form action="/loginr" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username(Provided by HOA)" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+
+    </form>
+    <form action ="/fpr">
+        <button class="btn btn-primary" type="submit">Forgot your Password(click here to retrive)</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,167 @@
+/* Size for brand */
+nav .navbar-brand {
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue {
+    color: #537fbe;
+}
+
+nav .navbar-brand .red {
+    color: #ea433b;
+}
+
+nav .navbar-brand .yellow {
+    color: #f5b82e;
+}
+
+nav .navbar-brand .green {
+    color: #2e944b;
+}
+
+
+/* Took help of gemini in finding and implementing dark mode and other things although essence is mine*/
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0f172a;
+
+    color: #ffffff !important;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+
+.text-muted {
+    color: #cbd5e1 !important;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1e293b !important;
+    border-bottom: 1px solid #334155;
+}
+
+.navbar-brand,
+.nav-link {
+    color: #ffffff !important;
+}
+
+.nav-link:hover {
+    color: #38bdf8 !important;
+}
+
+
+.card {
+    background-color: #1e293b !important;
+    border: 1px solid #334155 !important;
+    color: #ffffff !important;
+}
+
+.card-title,
+.card-text,
+.card-body {
+    color: #ffffff !important;
+}
+
+.card-header {
+    background-color: #0f172a !important;
+    border-bottom: 1px solid #334155;
+    color: #ffffff !important;
+}
+
+
+.form-control,
+.form-select {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    color: #ffffff !important;
+}
+
+.form-control::placeholder {
+    color: #94a3b8 !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.25) !important;
+}
+
+
+label,
+.form-label {
+    color: #ffffff !important;
+}
+
+
+.table {
+    color: #ffffff !important;
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+.table th,
+.table td {
+    color: #ffffff !important;
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+
+.table thead th,
+.table-dark th {
+    background-color: #0f172a !important;
+    color: #38bdf8 !important;
+}
+
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    background-color: #182232 !important;
+    color: #ffffff !important;
+}
+
+.table-hover>tbody>tr:hover>* {
+    background-color: #334155 !important;
+    color: #ffffff !important;
+}
+
+
+.alert-info {
+    background-color: #0c4a6e !important;
+    border-color: #0284c7 !important;
+    color: #ffffff !important;
+}
+
+.alert-warning {
+    background-color: #451a03 !important;
+    border-color: #b45309 !important;
+    color: #ffffff !important;
+}
+
+.alert-warning {
+    background-color: #451a03 !important;
+    border: 1px solid #b45309 !important;
+    color: #fde68a !important;
+}
+
+
+.alert-warning .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}

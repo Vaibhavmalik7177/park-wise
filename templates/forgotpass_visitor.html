@@ -1,0 +1,19 @@
+{% extends "layout_visitor.html" %}
+
+{% block title %}
+    Password_Retrival
+{% endblock %}
+
+{% block main %}
+    <div class="alert alert-warning text-center py-2 mb-3 mx-auto" role="alert" style="max-width: 400px; font-size: 0.85rem;">
+        <strong>⚠️ Note:</strong> Inputs are <strong>case-sensitive</strong>.
+    </div>
+    <form action="/prv" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="regno" placeholder="Registration Number(vehicle)" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Continue</button>
+
+    </form>
+
+{% endblock %}

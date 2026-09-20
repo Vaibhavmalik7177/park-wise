@@ -1,0 +1,84 @@
+{% extends "layout_visitor.html" %}
+
+{% block title %}
+    visitor
+{% endblock %}
+
+{% block main %}
+    <div class="container py-4 text-center">
+
+        <div class="card p-4 shadow-sm mb-4">
+            <h1 class="h3 mb-2" id="vis-greeting">Welcome, {{ session.get('user_name', 'Visitor') }}!</h1>
+            <p class="text-muted mb-2">Park-Wise Visitor Portal</p>
+            <div>
+                <span class="badge bg-secondary px-3 py-2" id="vis-time">--:--:--</span>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm">
+                    <form action="/iyv" method="post">
+                        <h5>Enter your estimate Time & Date of leaving</h5>
+                        <div class="mb-3">
+                            <input class="form-control mx-auto w-auto" name="exit" placeholder="Enter your Estimated Time of Leaving" type="datetime-local" min = "{{ current_time}}"required>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Enter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row g-3 justify-content-center">
+            <div class="col-md-5">
+                <div class="card p-3 h-100">
+                    <div class="fs-1 mb-2">🚗</div>
+                    <h5>Check My Vehicle</h5>
+                    <p class="text-muted small">View registered vehicle details and parking records.</p>
+                    <a href="/cyv" class="btn btn-primary mt-auto">View Details</a>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card p-3 h-100">
+                    <div class="fs-1 mb-2">⚙️</div>
+                    <h5>Settings</h5>
+                    <p class="text-muted small">Update your account password or information.</p>
+                    <a href="/setting" class="btn btn-outline-secondary mt-auto">Settings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Took help of gemini here to learn js and implement it in my code
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const greetingEl = document.getElementById("vis-greeting");
+            const hour = new Date().getHours();
+            let greeting = "Welcome";
+
+            if (hour < 12) {
+                greeting = "Good morning";
+            } else if (hour < 18) {
+                greeting = "Good afternoon";
+            } else {
+                greeting = "Good evening";
+            }
+
+            const currentText = greetingEl.innerText;
+            greetingEl.innerText = currentText.replace(/^Welcome/, greeting);
+
+
+            function updateClock() {
+                const now = new Date();
+                document.getElementById("vis-time").textContent = now.toLocaleTimeString();
+            }
+
+            updateClock();
+            setInterval(updateClock, 1000);
+        });
+    </script>
+{% endblock %}

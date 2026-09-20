@@ -1,0 +1,40 @@
+{% extends "layout_visitor.html" %}
+
+{% block title %}
+    My Vehicle
+{% endblock %}
+
+{% block main %}
+    <div class="container py-4 text-center">
+        <h2>My Vehicle Details</h2>
+        <p><strong>Owner:</strong> {{ info.username }}</p>
+        <p><strong>Registration No:</strong> <span class="text-uppercase">{{ info.regno }}</span></p>
+        <p><strong>Phone:</strong> {{ info.phone }}</p>
+
+        <hr class="my-4">
+
+        <h3>Parking Logs</h3>
+        {% if logs %}
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Time In</th>
+                        <th>Exit Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ log.timein }}</td>
+                            <td>{{ log.etime }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="text-muted">No parking records found.</p>
+        {% endif %}
+    </div>
+{% endblock %}

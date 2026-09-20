@@ -1,0 +1,133 @@
+{% extends "layout_resident.html" %}
+
+{% block title %}
+    Resident Dashboard
+{% endblock %}
+
+{% block main %}
+    <div class="container py-4">
+
+        <div class="row mb-4">
+            <div class="col">
+                <div class="card p-4 shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                        <div>
+
+                            <h1 class="h2 mb-1" id="greeting">Hello, {{ session.get('user_name', 'Resident') }}! 👋</h1>
+                            <p class="text-muted mb-0">Welcome back to your Park-Wise control panel.</p>
+                        </div>
+                        <div class="text-end mt-3 mt-md-0">
+
+                            <div class="badge bg-primary fs-6 px-3 py-2 mb-1" id="live-time">00:00:00 AM</div>
+                            <div class="small text-muted" id="live-date">Loading date...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mb-4">
+            <div class="col-md-6 mx-auto">
+                <div class="input-group">
+                    <span class="input-group-text">🔍</span>
+                    <input type="text" id="action-search" class="form-control" placeholder="Type to filter quick actions...">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row g-3" id="quick-actions">
+            <div class="col-md-4 action-card">
+                <div class="card h-100 text-center p-3">
+                    <div class="fs-1 mb-2">📋</div>
+                    <h5 class="card-title">Parking History</h5>
+                    <p class="card-text text-muted small">View all visitor entry and exit logs.</p>
+                    <a href="/history" class="btn btn-outline-primary btn-sm mt-auto">Open History</a>
+                </div>
+            </div>
+            <div class="col-md-4 action-card">
+                <div class="card h-100 text-center p-3">
+                    <div class="fs-1 mb-2">🔎</div>
+                    <h5 class="card-title">Find Contact</h5>
+                    <p class="card-text text-muted small">Search owner phone number by vehicle registration.</p>
+                    <a href="/fcono" class="btn btn-outline-primary btn-sm mt-auto">Find Phone No.</a>
+                </div>
+            </div>
+            <div class="col-md-4 action-card">
+                <div class="card h-100 text-center p-3">
+                    <div class="fs-1 mb-2">⚙️</div>
+                    <h5 class="card-title">Settings</h5>
+                    <p class="card-text text-muted small">Manage your resident password and security.</p>
+                    <a href="/settingr" class="btn btn-outline-primary btn-sm mt-auto">Account Settings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        //Took help of gemini here to help learn js and implement it
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const greetingElement = document.getElementById("greeting");
+            const currentHour = new Date().getHours();
+            let timeGreeting = "Hello";
+
+            if (currentHour < 12) {
+                timeGreeting = "Good morning";
+            } else if (currentHour < 18) {
+                timeGreeting = "Good afternoon";
+            } else {
+                timeGreeting = "Good evening";
+            }
+
+
+            const rawText = greetingElement.innerText;
+            greetingElement.innerText = rawText.replace(/^Hello/, timeGreeting);
+
+
+            function updateClock() {
+                const now = new Date();
+
+
+                const timeString = now.toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+
+
+                const dateString = now.toLocaleDateString([], {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+
+                document.getElementById("live-time").textContent = timeString;
+                document.getElementById("live-date").textContent = dateString;
+            }
+
+            updateClock();
+            setInterval(updateClock, 1000);
+
+
+            const searchInput = document.getElementById("action-search");
+            const actionCards = document.querySelectorAll(".action-card");
+
+            searchInput.addEventListener("keyup", function () {
+                const query = searchInput.value.toLowerCase();
+
+                actionCards.forEach(function (card) {
+                    const text = card.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "layout_resident.html" %}
+
+{% block title %}
+    Find_Phone_Number
+{% endblock %}
+
+{% block main %}
+    <form action="/fcono" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="regno" placeholder="Registration Number(vehicle)" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit" >Find Phone Number</button>
+
+{% endblock %}
